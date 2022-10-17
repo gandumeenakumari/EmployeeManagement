@@ -18,29 +18,41 @@ namespace EmployeeManagement.DataAccessLayer
         SqlConnection sqlConnection;
 
         
-        public Employee AddEmployee(Employee employee)
+        public string AddEmployee(Employee employee)
         {
-            sqlConnection = new SqlConnection(ConnectionString);
-            sqlConnection.Open();
-            string insetQuery = "insert into Employee(EmployeeId,EmployeeName,EmployeeDept,EmployeeSalary) values(" + employee.EmployeeId + ",'" + employee.EmployeeName + "','" + employee.EmployeeDept + "','" + employee.EmployeeSalary + "')";
-            SqlCommand cmd = new SqlCommand(insetQuery, sqlConnection);
-            cmd.ExecuteNonQuery();
-            Console.WriteLine("Data Inserted Successfully");
-            return employee;
+            string status;
+            try
+            {
+                sqlConnection = new SqlConnection(ConnectionString);
+                sqlConnection.Open();
+                string insetQuery = "insert into Employee(EmployeeId,EmployeeName,EmployeeDept,EmployeeSalary) values(" + employee.EmployeeId + ",'" + employee.EmployeeName + "','" + employee.EmployeeDept + "','" + employee.EmployeeSalary + "')";
+                SqlCommand cmd = new SqlCommand(insetQuery, sqlConnection);
+                cmd.ExecuteNonQuery();
+                status = "Data Inserted Successfully";
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+                status = "Data cannot be Inserted";
+            }
+            return status;
+
         }
-        public Employee UpdateEmployee(int EmployeeId,string EmployeeSalary)
+        public string  UpdateEmployee(int EmployeeId,string EmployeeSalary)
         {
             sqlConnection = new SqlConnection(ConnectionString);
             sqlConnection.Open();
             string updateQuery = "update Employee set EmployeeSalary=" + EmployeeSalary + "where EmployeeId=" + EmployeeId + "";
             SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
             updateCommand.ExecuteNonQuery();
-            Console.WriteLine("Updated The Data");
+            
 
             Employee updateEmployee = new Employee();
-            return updateEmployee;
+            string status = "Updated The Data";
+            return status ;
         }
-        public Employee ReadEmployee(Employee employee)
+        public string ReadEmployee(Employee employee)
         {
             sqlConnection = new SqlConnection(ConnectionString);
             sqlConnection.Open();
@@ -56,20 +68,21 @@ namespace EmployeeManagement.DataAccessLayer
                 Console.WriteLine("----");
             }
             dataReader.Close();
-            Console.WriteLine("Read Completed");
-            return employee;
+            string status= "Read Completed";
+            return status;
+        
 
         }
-        public Employee DeleteEmployee(int EmployeeId)
+        public string DeleteEmployee(int EmployeeId)
         {
             sqlConnection = new SqlConnection(ConnectionString);
             sqlConnection.Open();
             string deleteQuery = "Delete from Employee where EmployeeId=" + EmployeeId;
             SqlCommand deleteCommand = new SqlCommand(deleteQuery, sqlConnection);
             deleteCommand.ExecuteNonQuery();
-            Console.WriteLine("Deleted Successfully");
             Employee deleteEmployee = new Employee();
-            return deleteEmployee;
+            string status="Deleted Successfully";
+            return status;
         }
 
         public Employee GetEmployee(int EmployeeId)

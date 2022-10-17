@@ -11,21 +11,20 @@ namespace EmployeeManagement.BusinessLogicLayer
     public class EmployeeBusinessLogicLayer
     {
 
-        public Employee AddEmployee(Employee employee)
+        public string AddEmployee(Employee employee)
             {
                 EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
-            
-            Console.WriteLine("Enter Employee Id");
-            employee.EmployeeId=int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Employee Name");
-            employee.EmployeeName=Console.ReadLine();
-            Console.WriteLine("Enter Employee Department");
-            employee.EmployeeDept = Console.ReadLine();
-            Console.WriteLine("Enter Employee Salary");
-            employee.EmployeeSalary = Console.ReadLine();
+                Console.WriteLine("Enter Employee Id");
+                employee.EmployeeId = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter Employee Name");
+                employee.EmployeeName = Console.ReadLine();
+                Console.WriteLine("Enter Employee Department");
+                employee.EmployeeDept = Console.ReadLine();
+                Console.WriteLine("Enter Employee Salary");
+                employee.EmployeeSalary = Console.ReadLine();
                 return employeeDataAccessLayer.AddEmployee(employee);
             }
-        public Employee UpdateEmployee(int EmployeeId,string EmployeeSalary)
+        public string UpdateEmployee(int EmployeeId,string EmployeeSalary)
         {
             EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
             Console.WriteLine("Enter Employee Id whose info You want to update");
@@ -34,12 +33,12 @@ namespace EmployeeManagement.BusinessLogicLayer
             EmployeeSalary = Console.ReadLine();
             return employeeDataAccessLayer.UpdateEmployee(EmployeeId,EmployeeSalary);
         }
-        public Employee ReadEmployee(Employee employee)
+        public string ReadEmployee(Employee employee)
         {
             EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
             return employeeDataAccessLayer.ReadEmployee(employee);
         }
-        public Employee DeleteEmployee(int EmployeeId)
+        public string DeleteEmployee(int EmployeeId)
         {
             EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
             Console.WriteLine("Enter Employee Id whose info You want to Delete");
@@ -52,6 +51,7 @@ namespace EmployeeManagement.BusinessLogicLayer
             return employeeDataAccessLayer.GetEmployee(EmployeeId);
             
         }
+       
 
     }
 }

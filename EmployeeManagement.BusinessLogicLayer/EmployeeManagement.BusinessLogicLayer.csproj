@@ -182,10 +182,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EmployeeManagement.CustomExceptions\EmployeeManagement.CustomExceptions.csproj">
-      <Project>{95e8b9d3-a18a-4d26-94fb-641961065a47}</Project>
-      <Name>EmployeeManagement.CustomExceptions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EmployeeManagement.DataAccessLayer\EmployeeManagement.DataAccessLayer.csproj">
       <Project>{0f2f5965-0fda-4227-86c7-2dd9f3c45e58}</Project>
       <Name>EmployeeManagement.DataAccessLayer</Name>

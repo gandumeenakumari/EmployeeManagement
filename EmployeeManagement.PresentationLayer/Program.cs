@@ -24,20 +24,20 @@ namespace EmployeeManagement.PresentationLayer
                 switch (j)
                 {
                     case 1:
-                        employeeBusineessLogicLayer.AddEmployee(employee);
+                        Console.WriteLine(employeeBusineessLogicLayer.AddEmployee(employee));
                         break;
                      case 2:
                         employeeBusineessLogicLayer.ReadEmployee(employee);
                         break;
                     case 3:
-                        Employee update = new Employee();
-                        update = employeeBusineessLogicLayer.UpdateEmployee(update.EmployeeId, update.EmployeeSalary);
-                        Console.WriteLine(update.ToString());
+
+                        Console.WriteLine(employeeBusineessLogicLayer.UpdateEmployee(employee.EmployeeId, employee.EmployeeSalary));
+                        
                         break;
                     case 4:
-                        Employee delete = new Employee();
-                        delete = employeeBusineessLogicLayer.DeleteEmployee(delete.EmployeeId);
-                        Console.WriteLine(delete.ToString());
+
+                        Console.WriteLine(employeeBusineessLogicLayer.DeleteEmployee(employee.EmployeeId));
+                        
                         break;
 
                 }
